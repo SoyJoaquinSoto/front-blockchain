@@ -6,12 +6,9 @@ const AuthContext = createContext();
 function AuthContextProvider(props) {
 	const [loggedIn, setLoggedIn] = useState(undefined);
 	const [role, setRole] = useState(undefined);
-	const PORT = process.env.PORT || 5000;
 
 	async function getLoggedIn() {
-		const loggedInRes = await axios.get(
-			`http://localhost:${PORT}/auth/loggedIn`
-		);
+		const loggedInRes = await axios.get(`/auth/loggedIn`);
 		setLoggedIn(loggedInRes.data.loggedIn);
 		setRole(loggedInRes.data.role);
 	}

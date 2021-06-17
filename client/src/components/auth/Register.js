@@ -23,7 +23,6 @@ export default function Register() {
 			.oneOf([Yup.ref("password"), null], "Las contraseñas deben ser iguales")
 			.required("Es requerido que confirme su contraseña"),
 	});
-	const PORT = process.env.PORT || 5000;
 	return (
 		<div className={"flex items-center align-center bg-gray-100 h-full"}>
 			<Formik
@@ -35,7 +34,7 @@ export default function Register() {
 				validationSchema={validate}
 				onSubmit={async (values, actions) => {
 					try {
-						await axios.post(`http://localhost:${PORT}/auth/`, values);
+						await axios.post(`/auth/`, values);
 						await getLoggedIn();
 						history.push("/");
 					} catch (error) {
