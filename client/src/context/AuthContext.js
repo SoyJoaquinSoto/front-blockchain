@@ -8,7 +8,9 @@ function AuthContextProvider(props) {
 	const [role, setRole] = useState(undefined);
 
 	async function getLoggedIn() {
-		const loggedInRes = await axios.get("http://localhost:5000/auth/loggedIn");
+		const loggedInRes = await axios.get(
+			"https://proyecto-blockchain.herokuapp.com/auth/loggedIn"
+		);
 		setLoggedIn(loggedInRes.data.loggedIn);
 		setRole(loggedInRes.data.role);
 	}
