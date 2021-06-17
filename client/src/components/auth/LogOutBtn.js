@@ -8,9 +8,10 @@ function LogOutBtn() {
 
 	const history = useHistory();
 	const PORT = process.env.PORT || 5000;
+	const RUTA = process.env.RUTA || "http://localhost";
 
 	async function logOut() {
-		await axios.get(`http://localhost:${PORT}/auth/logout`);
+		await axios.get(`${RUTA}:${PORT}/auth/logout`);
 		await getLoggedIn();
 		history.push("/");
 	}

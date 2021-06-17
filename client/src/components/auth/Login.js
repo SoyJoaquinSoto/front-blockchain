@@ -38,6 +38,8 @@ export default function Login() {
 	});
 
 	const PORT = process.env.PORT || 5000;
+	const RUTA = process.env.RUTA || "http://localhost";
+
 	return (
 		<div className={"flex items-center align-center bg-ipn h-full "}>
 			<Formik
@@ -48,7 +50,7 @@ export default function Login() {
 				validationSchema={validate}
 				onSubmit={async (values) => {
 					try {
-						await axios.post(`http://localhost:${PORT}/auth/login`, values);
+						await axios.post(`${RUTA}:${PORT}/auth/login`, values);
 						await getLoggedIn();
 					} catch (error) {
 						Swal.fire({
