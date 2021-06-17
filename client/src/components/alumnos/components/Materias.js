@@ -3,7 +3,7 @@ import Materia from "./Materia";
 
 function Materias(props) {
 	return (
-		<div className={"flex flex-col gap-3 h-full overflow-y-auto"}>
+		<div className={"flex flex-col gap-3 h-full overflow-y-auto pb-20"}>
 			{props.materias &&
 				props.materias.map(
 					(materia, index) =>

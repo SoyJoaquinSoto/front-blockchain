@@ -6,6 +6,7 @@ import { materias } from "../../helpers/materias";
 import axios from "axios";
 import _ from "underscore";
 import Swal from "sweetalert2";
+import generarPDF from "../../helpers/generarPDF";
 
 function Alumno(props) {
 	useEffect(() => {
@@ -55,7 +56,7 @@ function Alumno(props) {
 					(mat) =>
 						data.find((pet) => _.isEqual(pet.datosCurso, mat.datosCurso)) ===
 							undefined || mat.estado === "Rechazado"
-				); 
+				);
 
 				setDisponibles(di);
 			});
@@ -120,6 +121,12 @@ function Alumno(props) {
 				</Columna>
 
 				<Columna titulo="Mis cursos">
+					<button
+						className="w-full p-4 bg-gray-300 mb-3 font-bold rounded-lg border-2 border-gray-500"
+						onClick={() => generarPDF(aprobados)}
+					>
+						Generar reporte de cursos aprobados
+					</button>
 					<Materias materias={[...aprobados].reverse()} />
 				</Columna>
 			</div>
