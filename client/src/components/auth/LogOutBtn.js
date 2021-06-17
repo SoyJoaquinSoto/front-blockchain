@@ -7,9 +7,10 @@ function LogOutBtn() {
 	const { getLoggedIn } = useContext(AuthContext);
 
 	const history = useHistory();
+	const PORT = process.env.PORT || 5000;
 
 	async function logOut() {
-		await axios.get("http://localhost:5000/auth/logout");
+		await axios.get(`http://localhost:${PORT}/auth/logout`);
 		await getLoggedIn();
 		history.push("/");
 	}

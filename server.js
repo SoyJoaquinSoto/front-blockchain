@@ -11,22 +11,17 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-app.use(express.static(path.join(__dirname, "client", "build")));
-
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-
-app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-	cors({
-		origin: ["https://proyecto-blockchain.herokuapp.com"],
-		credentials: true,
-	})
-);
+app.use(cors());
+
+app.get("*", function (request, response) {
+	response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
+
+app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
 
 // connect to mongoDB
 

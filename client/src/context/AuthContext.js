@@ -6,10 +6,11 @@ const AuthContext = createContext();
 function AuthContextProvider(props) {
 	const [loggedIn, setLoggedIn] = useState(undefined);
 	const [role, setRole] = useState(undefined);
+	const PORT = process.env.PORT || 5000;
 
 	async function getLoggedIn() {
 		const loggedInRes = await axios.get(
-			"https://proyecto-blockchain.herokuapp.com/auth/loggedIn"
+			`http://localhost:${PORT}/auth/loggedIn`
 		);
 		setLoggedIn(loggedInRes.data.loggedIn);
 		setRole(loggedInRes.data.role);

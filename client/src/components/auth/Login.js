@@ -36,6 +36,8 @@ export default function Login() {
 			.max(10, "La contraseña debe ser de 10 caracteres como máximo")
 			.required("La contraseña es requerida"),
 	});
+
+	const PORT = process.env.PORT || 5000;
 	return (
 		<div className={"flex items-center align-center bg-ipn h-full "}>
 			<Formik
@@ -46,7 +48,7 @@ export default function Login() {
 				validationSchema={validate}
 				onSubmit={async (values) => {
 					try {
-						await axios.post("http://localhost:5000/auth/login", values);
+						await axios.post(`http://localhost:${PORT}/auth/login`, values);
 						await getLoggedIn();
 					} catch (error) {
 						Swal.fire({
