@@ -5,13 +5,12 @@ import moment from "moment";
 const generatePDF = (cursos) => {
 	const doc = new jsPDF();
 
-	const tableColumn = ["Id", "Curso", "Profesor", "Fecha"];
+	const tableColumn = ["Curso", "Profesor", "Fecha"];
 	const tableRows = [];
 
 	// for each ticket pass all its data into an array
 	cursos.forEach((curso) => {
 		const cursoData = [
-			curso.id,
 			curso.datosCurso.curso,
 			curso.datosCurso.profesor,
 			// called date-fns to format the date on the ticket
