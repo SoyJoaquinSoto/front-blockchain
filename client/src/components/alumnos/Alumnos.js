@@ -45,21 +45,23 @@ function Alumno(props) {
 
 	const getPeticiones = () => {
 		try {
-			axios.get("http://localhost:53560/api/alumno/").then(({ data }) => {
-				const ap = data.filter((pet) => pet.estado === "Aprobado");
-				setAprobados(ap);
+			axios
+				.get("https://upiblockchain.herokuapp.com/api/alumno/")
+				.then(({ data }) => {
+					const ap = data.filter((pet) => pet.estado === "Aprobado");
+					setAprobados(ap);
 
-				const pe = data.filter((pet) => pet.estado === "Pendiente");
-				setPendientes(pe);
+					const pe = data.filter((pet) => pet.estado === "Pendiente");
+					setPendientes(pe);
 
-				var di = materias.filter(
-					(mat) =>
-						data.find((pet) => _.isEqual(pet.datosCurso, mat.datosCurso)) ===
-							undefined || mat.estado === "Rechazado"
-				);
+					var di = materias.filter(
+						(mat) =>
+							data.find((pet) => _.isEqual(pet.datosCurso, mat.datosCurso)) ===
+								undefined || mat.estado === "Rechazado"
+					);
 
-				setDisponibles(di);
-			});
+					setDisponibles(di);
+				});
 		} catch (error) {
 			Swal.fire(
 				"Error",
@@ -81,7 +83,10 @@ function Alumno(props) {
 			};
 
 			try {
-				await axios.post("http://localhost:53560/api/alumno/", data);
+				await axios.post(
+					"https://upiblockchain.herokuapp.com/api/alumno/",
+					data
+				);
 				Swal.fire("", "Se realizó la petición correctamente", "success");
 			} catch (error) {
 				Swal.fire(

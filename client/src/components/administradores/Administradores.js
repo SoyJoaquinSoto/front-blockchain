@@ -13,9 +13,11 @@ function Alumno(props) {
 
 	const getBloques = () => {
 		try {
-			axios.get("http://localhost:53560/api/block/").then(({ data }) => {
-				setBloques(data);
-			});
+			axios
+				.get("https://upiblockchain.herokuapp.com/api/block/")
+				.then(({ data }) => {
+					setBloques(data);
+				});
 		} catch (error) {
 			Swal.fire(
 				"Error",

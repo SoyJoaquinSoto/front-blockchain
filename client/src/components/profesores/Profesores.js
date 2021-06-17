@@ -22,10 +22,12 @@ function Profesor(props) {
 
 	const getPeticiones = () => {
 		try {
-			axios.get("http://localhost:53560/api/alumno/").then(({ data }) => {
-				var pe = data.filter((pet) => pet.estado === "Pendiente").reverse();
-				setPendientes(pe);
-			});
+			axios
+				.get("https://upiblockchain.herokuapp.com/api/alumno/")
+				.then(({ data }) => {
+					var pe = data.filter((pet) => pet.estado === "Pendiente").reverse();
+					setPendientes(pe);
+				});
 		} catch (error) {
 			Swal.fire(
 				"Error",
@@ -44,13 +46,13 @@ function Profesor(props) {
 	const handleClick = async (index, estado) => {
 		try {
 			await axios.put(
-				`http://localhost:53560/api/alumno/${pendientes[index].idInfo}`,
+				`https://upiblockchain.herokuapp.com/api/alumno/${pendientes[index].idInfo}`,
 				{ ...pendientes[index], estado: estado }
 			);
 			if (estado === "Aprobado") {
 				try {
 					await axios.post(
-						"http://localhost:53560/api/block",
+						"https://upiblockchain.herokuapp.com/api/block",
 						pendientes[index]
 					);
 				} catch (error) {
