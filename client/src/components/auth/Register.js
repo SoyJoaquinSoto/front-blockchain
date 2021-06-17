@@ -24,7 +24,6 @@ export default function Register() {
 			.required("Es requerido que confirme su contraseña"),
 	});
 	const PORT = process.env.PORT || 5000;
-	const RUTA = process.env.RUTA || "http://localhost";
 	return (
 		<div className={"flex items-center align-center bg-gray-100 h-full"}>
 			<Formik
@@ -36,7 +35,7 @@ export default function Register() {
 				validationSchema={validate}
 				onSubmit={async (values, actions) => {
 					try {
-						await axios.post(`${RUTA}:${PORT}/auth/`, values);
+						await axios.post(`http://localhost:${PORT}/auth/`, values);
 						await getLoggedIn();
 						history.push("/");
 					} catch (error) {
