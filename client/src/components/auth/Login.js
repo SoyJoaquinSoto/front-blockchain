@@ -12,6 +12,7 @@ export default function Login() {
 	const history = useHistory();
 
 	useEffect(() => {
+		console.log(role);
 		switch (role) {
 			case "alumno":
 				history.push("/alumno");
