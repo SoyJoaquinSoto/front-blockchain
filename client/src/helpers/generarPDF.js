@@ -3,7 +3,7 @@ import "jspdf-autotable";
 import moment from "moment";
 
 const generatePDF = (cursos) => {
-	const doc = new jsPDF();
+	const doc = new jsPDF("l", "mm", "legal");
 
 	const tableColumn = ["Curso", "Profesor", "Fecha"];
 	const tableRows = [];
