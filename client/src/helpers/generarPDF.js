@@ -26,6 +26,9 @@ const generatePDF = (cursos) => {
 	// we use a date string to generate our filename.
 	// ticket title. and margin-top + margin-left
 	doc.text("Cursos cumplidos.", 14, 15);
+	var img = new Image();
+	img.src = "imgs/ipn.png";
+	doc.addImage(img, 14, 30, 80, 100);
 	// we define the name of our PDF file.
 	doc.save(`reporte_${date}.pdf`);
 };
