@@ -135,7 +135,7 @@ const generatePDF = (cursos) => {
 	);
 
 	doc.text(
-		"FERNANDO VÁZQUEZ TORRES",
+		"FUENLABRADA VELAZQUEZ M EN C. SERGIO",
 		doc.internal.pageSize.getWidth() / 2,
 		doc.lastAutoTable.finalY + 200,
 		{
