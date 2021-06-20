@@ -75,9 +75,9 @@ function Alumno(props) {
 		if (materia.curso) {
 			const data = {
 				datosAlumno: {
-					nombre: "Soto",
+					nombre: "Joaquín Soto De la Mora",
 					boleta: "2019600416",
-					carrera: "Ciencias",
+					carrera: "Licenciatura en Ciencias de la informática",
 				},
 				datosCurso: materia,
 			};
